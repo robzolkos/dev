@@ -9,8 +9,22 @@ if [ ! -d $HOME/personal ]; then
   mkdir $HOME/personal
 fi
 
-git clone https://github.com/robzolkos/dev $HOME/personal/dev
+# install yay
+sudo pacman -S --needed --noconfirm base-devel
+
+if [ ! -d $HOME/src ]; then
+  mkdir $HOME/src
+fi
+
+cd $HOME/src
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
+
+git clone -b https://github.com/robzolkos/dev $HOME/personal/dev
+
+cd $HOME
 
 pushd $HOME/personal/dev
-# ./run
+./run
 popd
