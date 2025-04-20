@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+sudo pacman -Syu
+
+if ! command -v git &> /dev/null; then
+  sudo pacman -S --noconfirm git
+fi
+
+if [ ! -d $HOME/personal ]; then
+  mkdir $HOME/personal
+fi
+
+git clone https://github.com/robzolkos/dev $HOME/personal/dev
+
+pushd $HOME/personal/dev
+# ./run
+popd
